@@ -3,6 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // FIX: "Cannot set property fetch of #<Window> which has only a getter"
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          if (originalFetch) {
+            Object.defineProperty(window, 'fetch', {
+              value: originalFetch,
+              writable: true,
+              configurable: true
+            });
+          }
+        } catch (e) {
+          console.warn('Fetch shim failed', e);
+        }
+      })();
+    </script>
     <title>Prexious Vouge | Luxury Fashion Heritage</title>
   </head>
   <body>
