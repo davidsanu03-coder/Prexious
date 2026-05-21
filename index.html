@@ -5,18 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
       // FIX: "Cannot set property fetch of #<Window> which has only a getter"
+      // This happens when polyfills try to overwrite read-only fetch in some environments.
+      // We handle this by aliasing 'formdata-polyfill' to an empty module in vite.config.ts,
+      // but we also provide a global variable shim here for other packages.
       (function() {
-        try {
-          var originalFetch = window.fetch;
-          if (originalFetch) {
-            Object.defineProperty(window, 'fetch', {
-              value: originalFetch,
-              writable: true,
-              configurable: true
-            });
-          }
-        } catch (e) {
-          console.warn('Fetch shim failed', e);
+        if (typeof global === 'undefined') {
+          window.global = window;
         }
       })();
     </script>
