@@ -13,7 +13,10 @@ export default defineConfig(({mode}) => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
-        'formdata-polyfill': path.resolve(__dirname, './src/empty.js'),
+        'formdata-polyfill/esm.min.js': path.resolve(__dirname, './frontend/empty.js'),
+        'formdata-polyfill/formdata.min.js': path.resolve(__dirname, './frontend/empty.js'),
+        'formdata-polyfill/FormData.js': path.resolve(__dirname, './frontend/empty.js'),
+        'formdata-polyfill': path.resolve(__dirname, './frontend/empty.js'),
       },
     },
     server: {

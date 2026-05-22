@@ -4,9 +4,9 @@ import { createServer as createViteServer } from "vite";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-import authRoutes from "./src/routes/auth.ts";
-import apiRoutes from "./src/routes/api.ts";
-import paymentRoutes from "./src/routes/payment.ts";
+import authRoutes from "./routes/auth.ts";
+import apiRoutes from "./routes/api.ts";
+import paymentRoutes from "./routes/payment.ts";
 
 // Load env vars
 dotenv.config();

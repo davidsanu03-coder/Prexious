@@ -5,12 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
       // FIX: "Cannot set property fetch of #<Window> which has only a getter"
-      // This happens when polyfills try to overwrite read-only fetch in some environments.
-      // We handle this by aliasing 'formdata-polyfill' to an empty module in vite.config.ts,
-      // but we also provide a global variable shim here for other packages.
+      // This happens when libraries try to overwrite read-only fetch (like formdata-polyfill or similar).
+      // We declare a getter/setter descriptor that overrides the browse default to allow writes.
       (function() {
-        if (typeof global === 'undefined') {
+        if (typeof window.global === 'undefined') {
           window.global = window;
+        }
+        try {
+          var originalFetch = window.fetch;
+          if (originalFetch) {
+            Object.defineProperty(window, 'fetch', {
+              get: function() {
+                return originalFetch;
+              },
+              set: function(val) {
+                console.info('Intercepted override request for read-only fetch.');
+                originalFetch = val;
+              },
+              configurable: true,
+              enumerable: true
+            });
+          }
+        } catch (e) {
+          console.warn('Configurable fetch override failed', e);
         }
       })();
     </script>
@@ -19,7 +36,7 @@
   <body>
     <div id="root"></div>
     <script src="https://js.paystack.co/v1/inline.js"></script>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/frontend/main.tsx"></script>
   </body>
 </html>
 
