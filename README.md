@@ -1,31 +1,52 @@
-# Prexious Vouge - MERN Stack Fashion eCommerce
+# Prexious — Fashion E-commerce Platform
 
-## CRITICAL SETUP STEP: MongoDB IP Whitelist
+A full-stack fashion e-commerce application built with React, Node.js and MongoDB, with product management, authentication, media handling and payment integration.
 
-The application is running in a dynamic Cloud environment. To connect to MongoDB Atlas, you **MUST** whitelist all IP addresses:
+## Technology
 
-1.  Log in to [MongoDB Atlas](https://cloud.mongodb.com/).
-2.  Navigate to **Network Access** (under the "Security" section in the sidebar).
-3.  Click **Add IP Address**.
-4.  Click **ALLOW ACCESS FROM ANYWHERE** (this adds `0.0.0.0/0`).
-5.  Click **Confirm**.
-6.  Wait about 60 seconds for the change to deploy.
+- React
+- TypeScript
+- Vite
+- Node.js / Express
+- MongoDB / Mongoose
+- JWT authentication
+- Cloudinary
+- Paystack
+- Google Gemini
+- Zod
+- Tailwind CSS
 
-If you don't do this, the application will fail to fetch products or settings.
+## Core capabilities
 
-## Environment Variables (Secrets)
+- Authentication and authorization
+- Product and catalog management
+- Fashion product discovery
+- Cloudinary media management
+- Paystack payment integration
+- Backend API services
+- Form validation
+- Responsive frontend experience
 
-Add these in the **Settings > Secrets** panel:
+## Environment
 
-- `MONGODB_URI`: Your MongoDB connection string.
-- `JWT_SECRET`: A long random string for auth.
-- `PAYSTACK_SECRET_KEY`: Your Paystack secret key.
-- `VITE_PAYSTACK_PUBLIC_KEY`: Your Paystack public key.
-- `CLOUDINARY_CLOUD_NAME`: Your Cloudinary cloud name.
-- `CLOUDINARY_API_KEY`: Your Cloudinary API key.
-- `CLOUDINARY_API_SECRET`: Your Cloudinary API secret.
+Configure these in your deployment environment and never commit secrets:
 
-## Troubleshooting
+`MONGODB_URI`, `JWT_SECRET`, `PAYSTACK_SECRET_KEY`, `VITE_PAYSTACK_PUBLIC_KEY`, `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`.
 
-### "Cannot set property fetch of #<Window> which has only a getter"
-This is a known issue with environment polyfills. We have updated `vite.config.ts` to use `globalThis` which should resolve this. If you still see it, try refreshing the page.
+## Development
+
+```bash
+npm install
+npm run dev
+```
+
+Production:
+
+```bash
+npm run build
+npm start
+```
+
+## Engineering focus
+
+This project demonstrates full-stack development across frontend UI, backend APIs, authentication, database integration, media storage and payment infrastructure.
