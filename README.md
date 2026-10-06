@@ -29,9 +29,7 @@ A full-stack fashion e-commerce application built with React, Node.js and MongoD
 
 ## Environment
 
-Configure these in your deployment environment and never commit secrets:
-
-`MONGODB_URI`, `JWT_SECRET`, `PAYSTACK_SECRET_KEY`, `VITE_PAYSTACK_PUBLIC_KEY`, `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`.
+Configure secrets in your deployment environment and never commit them.
 
 ## Development
 
