@@ -431,6 +431,11 @@ create policy "orders_admin_read_all"
 on public.orders for select to authenticated
 using ((select private.is_admin()));
 
+create policy "orders_admin_update_fulfilment"
+on public.orders for update to authenticated
+using ((select private.is_admin()))
+with check ((select private.is_admin()));
+
 create policy "order_items_customer_read_own_order"
 on public.order_items for select to authenticated
 using (
@@ -583,6 +588,7 @@ grant insert on public.bookings to anon, authenticated;
 grant select, update, delete on public.bookings to authenticated;
 
 grant select on public.orders, public.order_items, public.payments to authenticated;
+grant update (status, customer_note) on public.orders to authenticated;
 
 grant select on public.reviews to anon, authenticated;
 grant insert, update, delete on public.reviews to authenticated;
